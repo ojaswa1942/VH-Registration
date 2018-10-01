@@ -5,3 +5,7 @@ body{
 	background-position: center;
   	background-size: cover;
 }
+
+nav{
+	z-index: 1;
+}
