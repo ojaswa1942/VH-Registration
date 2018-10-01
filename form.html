@@ -26,88 +26,85 @@
     </nav>
     
     <div class="container">
-  <form>
-    <h1>Visitor Hostel's Registration Form</h1>
-    <h2>Student's Information</h2>
-    <div class="form-group">
-      <select>
-        <option>Option 1</option>
-        <option>Option 2</option>
-        <option>Option 2</option>
-      </select>
-      <label for="select" class="control-label">Choose Room's Catergory</label><i class="bar"></i>
+      <form action="submit.php" method="post">
+        <h1>Visitor Hostel's Registration Form</h1>
+        <h2>Student's Information</h2>
+        <div class="form-group">
+          <select>
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 2</option>
+          </select>
+          <label for="select" class="control-label">Choose Room's Catergory</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="student-name" required="required"/>
+          <label for="input" class="control-label">Name</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="rollno" required="required"/>
+          <label for="input" class="control-label">Roll Number</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="student-mobile" required="required"/>
+          <label for="input" class="control-label">Phone Number</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="student-email" required="required"/>
+          <label for="input" class="control-label">College's E-Mail</label><i class="bar"></i>
+        </div>
+        <!-- <div class="form-group">
+          <textarea required="required"></textarea>
+          <label for="textarea" class="control-label">Hostel's Address</label><i class="bar"></i>
+        </div> -->
+        <h2>Visitor's Information</h2>
+        <div class="form-group">
+          <input type="text" name="first-name" required="required"/>
+          <label for="input" class="control-label">First Name</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="last-name" required="required"/>
+          <label for="input" class="control-label">Last Name</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="relation" required="required"/>
+          <label for="input" class="control-label">Relation With The Student</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="mobile" required="required"/>
+          <label for="input" class="control-label">Phone Number</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="email" required="required"/>
+          <label for="input" class="control-label">E-Mail Address</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <textarea name="address" required="required"></textarea>
+          <label for="textarea" class="control-label">Residential Address</label><i class="bar"></i>
+        </div>
+        <h2>Additional Information</h2>
+        <div class="form-group">
+          <input type="text" name="duration" required="required"/>
+          <label for="input" class="control-label">Duration Of Stay (in Days)</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="number" required="required"/>
+          <label for="input" class="control-label">No. of Accompanying Members</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="phone" required="required"/>
+          <label for="input" class="control-label">Phone Number</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <textarea name="address2" required="required"></textarea>
+          <label for="textarea" class="control-label">Residential Address</label><i class="bar"></i>
+        </div>
+  
+        <div class="button-container">
+          <button type="submit" class="button"><span>Submit</span></button>
+        </div>
+      </form>
     </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Name</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Roll Number</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Phone Number</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">College's E-Mail</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <textarea required="required"></textarea>
-      <label for="textarea" class="control-label">Hostel's Address</label><i class="bar"></i>
-    </div>
-  </form>
-  <form>
-    <h2>Visitor's Information</h2>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">First Name</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Last Name</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Relation With The Student</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Phone Number</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">E-Mail Address</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <textarea required="required"></textarea>
-      <label for="textarea" class="control-label">Residential Address</label><i class="bar"></i>
-    </div>
-  </form>
-  <form>
-    <h2>Additional Information</h2>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Duration Of Stay (in Days)</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">No. of Accompanying Members</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <input type="text" required="required"/>
-      <label for="input" class="control-label">Phone Number</label><i class="bar"></i>
-    </div>
-    <div class="form-group">
-      <textarea required="required"></textarea>
-      <label for="textarea" class="control-label">Residential Address</label><i class="bar"></i>
-    </div>
-  </form>
-  <div class="button-container">
-    <button type="button" class="button"><span>Submit</span></button>
-  </div>
-</div>
 
     <footer>
       Copyright &copy; ABV-Indian Institute of Information Technology & Management, Gwalior
