@@ -7,6 +7,7 @@
 	// connect to database
 	$db = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
+	$category = mysqli_real_escape_string($db, $_POST['category']);
 	$student_name = mysqli_real_escape_string($db, $_POST['student-name']);
 	$student_email = mysqli_real_escape_string($db, $_POST['student-email']);
 	$rollno = mysqli_real_escape_string($db, $_POST['rollno']);
@@ -38,7 +39,7 @@
 
 	  
 	if (count($errors) == 0) {
-	  	$query = "INSERT INTO requests (st_name, st_email, rollno, st_mobile, first_name, last_name, relation, mobile, email, address, duration, num, phone, address2) VALUES('$student_name', '$student_email', '$rollno', '$student_mobile', '$first_name', '$last_name', '$relation', '$mobile', '$email', '$address', '$duration', '$number', '$phone', '$address2')";
+	  	$query = "INSERT INTO requests (category, st_name, st_email, rollno, st_mobile, first_name, last_name, relation, mobile, email, address, duration, num, phone, address2) VALUES('$category', '$student_name', '$student_email', '$rollno', '$student_mobile', '$first_name', '$last_name', '$relation', '$mobile', '$email', '$address', '$duration', '$number', '$phone', '$address2')";
 	  	mysqli_query($db, $query);
 
 	  	$_SESSION['success'] = "Request Successfully Submitted!";
