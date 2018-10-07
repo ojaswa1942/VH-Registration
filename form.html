@@ -3,10 +3,28 @@
 <head>
   <title>ABV-IIITM | VH Registration</title>
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style2.css">
   <link rel="icon" type="image/png" href="logo.png">
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif|Rubik" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script type="text/javascript" >
+
+    $(document).ready(function() {
+            $(".menu-icon").on("click", function() {
+                  $("nav ul").toggleClass("showing");
+            });
+        });
+
+    $(window).on('scroll', function() {
+      if($(window).scrollTop()) {
+        $('nav').addClass('black');
+      }
+      else {
+        $('nav').removeClass('black');
+    }
+  })
+  </script>
 </head>
 <body>
   <div class="wrapper">
@@ -31,9 +49,8 @@
         <h2>Student's Information</h2>
         <div class="form-group">
           <select name="category">
-            <option value="A">Option 1</option>
-            <option value="B">Option 2</option>
-            <option value="C">Option 2</option>
+            <option value="A">AC</option>
+            <option value="B">Non-AC</option>
           </select>
           <label for="select" class="control-label">Choose Room's Catergory</label><i class="bar"></i>
         </div>
@@ -85,19 +102,15 @@
         <h2>Additional Information</h2>
         <div class="form-group">
           <input type="text" name="duration" required="required"/>
+          <label for="input" class="control-label">Date Of Arrival</label><i class="bar"></i>
+        </div>
+        <div class="form-group">
+          <input type="text" name="duration" required="required"/>
           <label for="input" class="control-label">Duration Of Stay (in Days)</label><i class="bar"></i>
         </div>
         <div class="form-group">
           <input type="text" name="number" required="required"/>
           <label for="input" class="control-label">No. of Accompanying Members</label><i class="bar"></i>
-        </div>
-        <div class="form-group">
-          <input type="text" name="phone" required="required"/>
-          <label for="input" class="control-label">Phone Number</label><i class="bar"></i>
-        </div>
-        <div class="form-group">
-          <textarea name="address2" required="required"></textarea>
-          <label for="textarea" class="control-label">Residential Address</label><i class="bar"></i>
         </div>
   
         <div class="button-container">
