@@ -45,7 +45,7 @@
 	  	$_SESSION['success'] = "Request Successfully Submitted!";
 	    //$query2 = "INSERT INTO events (user) VALUES('$username')";
 	    //mysqli_query($db, $query2);
-	  	header('location: dashboard.php');
-	  	echo "<script>window.location = 'dashboard.php';</script>";
+	  	header('location: done.html');
+	  	echo "<script>window.location = 'done.html';</script>";
 	}
 ?>
