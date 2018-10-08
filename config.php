@@ -1,4 +1,5 @@
 <?php
+include('mailconfig.php');
 // Edit these values according to your development environment
 
 $servername = "localhost";   //Your Mysql Server
