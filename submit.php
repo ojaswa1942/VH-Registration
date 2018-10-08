@@ -30,6 +30,8 @@
 	$number = mysqli_real_escape_string($db, $_POST['number']);
 	$doa = mysqli_real_escape_string($db, $_POST['doa']);
 
+	$key = mt_rand(100000, 999999);
+
 	if (empty($student_name)) { array_push($errors, "Student Name is required"); }
 	if (empty($student_email)) { array_push($errors, "Student email is required"); }
 	if (empty($rollno)) { array_push($errors, "Roll No. is required"); }
@@ -44,8 +46,14 @@
 	if (empty($doa)) { array_push($errors, "Date of arrival is required"); }
 	  
 	if (count($errors) == 0) {
-	  	$query = "INSERT INTO requests (category, st_name, st_email, rollno, st_mobile, first_name, last_name, relation, mobile, email, address, duration, num, date_of_arrival) VALUES('$category', '$student_name', '$student_email', '$rollno', '$student_mobile', '$first_name', '$last_name', '$relation', '$mobile', '$email', '$address', '$duration', '$number', '$doa')";
-	  	mysqli_query($db, $query);
+	  	$query = "INSERT INTO requests (category, st_name, st_email, rollno, st_mobile, first_name, last_name, relation, mobile, email, address, duration, num, date_of_arrival, st_key) VALUES('$category', '$student_name', '$student_email', '$rollno', '$student_mobile', '$first_name', '$last_name', '$relation', '$mobile', '$email', '$address', '$duration', '$number', '$doa', $key)";
+
+	  	if (mysqli_query($db, $query)) {
+    		$id = mysqli_insert_id($db);
+    		echo "New record created successfully. Last inserted ID is: " . $last_id;
+		} else {
+    		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		}
 
 	  	$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 		try {
@@ -54,8 +62,8 @@
 		    $mail->isSMTP();                                      // Set mailer to use SMTP
 		    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-		    $mail->Username = 'prmsrswt@gmail.com';                 // SMTP username
-		    $mail->Password = 'PASSWORD_HERE';                           // SMTP password
+		    $mail->Username = $mail_id;                 // SMTP username
+		    $mail->Password = $mail_password;                           // SMTP password
 		    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 		    $mail->Port = 587;                                    // TCP port to connect to
 
@@ -67,8 +75,8 @@
 		    //Content
 		    $mail->isHTML(true);                                  // Set email format to HTML
 		    $mail->Subject = 'Registration for Visitor Hostel';
-		    $mail->Body    = 'Click the following link to verify that you registered for a room in Visitor Hostel <br /> <a href="http://127.0.0.1/verify.php?key='.$rollno.'">http://127.0.0.1/verify.php?key='.$rollno.'</a> .';
-		    $mail->AltBody = 'Open this url in your browser to verify that you applied for a room in Visitor Hostel http://127.0.0.1/verify.php?key='.$rollno.' .';
+		    $mail->Body    = 'Click the following link to verify that you registered for a room in Visitor Hostel <br /> <a href="http://127.0.0.1/git/VH-Registration/verify.php?key='.$key.'&id='.$id.'">http://127.0.0.1/git/VH-Registration/verify.php?key='.$key.'&id='.$id.'</a> .';
+		    $mail->AltBody = 'Open this url in your browser to verify that you applied for a room in Visitor Hostel http://127.0.0.1/git/VH-Registration/verify.php?key='.$key.'&id='.$id.' .';
 
 		    $mail->send();
 		    echo 'Message has been sent';
