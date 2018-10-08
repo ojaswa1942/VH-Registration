@@ -8,26 +8,28 @@
 	require 'mailer/SMTP.php';
 	session_start();
 
+	$errors = array(); 
+
 	// connect to database
 	$db = mysqli_connect($servername, $dbusername, $dbpassword, $dbname);
 
 	$id = mysqli_real_escape_string($db, $_GET['id']);
 	$key = mysqli_real_escape_string($db, $_GET['key']);
 
-	$incharge_email = "prmsrswt@gmail.com";
+	$director_email = "prmsrswt@gmail.com";
 
-	$query = "SELECT * FROM requests WHERE id='$id' AND st_key='$key'";
+	$query = "SELECT * FROM requests WHERE id='$id' AND in_key='$key'";
 	$result = mysqli_query($db, $query);
 	$row = mysqli_fetch_assoc($result);
 	if (mysqli_num_rows($result) == 1) {
-		$in_key = mt_rand(100000, 999999);
+		$dir_key = mt_rand(100000, 999999);
 
-		$sql = "UPDATE requests SET app_student=1, in_key='$in_key' WHERE id='$id'";
+		$sql = "UPDATE requests SET app_incharge=1, dir_key='$dir_key' WHERE id='$id'";
 		mysqli_query($db, $sql);
 
 		$mail = new PHPMailer();                              // Passing `true` enables exceptions
-		$email = '<strong>'.$row['st_name'].'</strong> has requested a '.$row['category'].' room for '.$row['first_name'].'. Click the following link to approve the request. <br /> <a href="http://127.0.0.1/git/VH-Registration/approve.php?key='.$in_key.'&id='.$row['id'].'">http://127.0.0.1/git/VH-Registration/approve.php?key='.$in_key.'&id='.$row['id'].'</a> .';
-		$altemail = $row['st_name'].' has requested a '.$row['category'].' room for '.$row['first_name'].'. Open the following link in browser to approve the request. http://127.0.0.1/git/VH-Registration/approve.php?key='.$in_key.'&id='.$row['id'].' .';
+		$email = '<strong>'.$row['st_name'].'</strong> has requested a '.$row['category'].' room for '.$row['first_name'].'. Click the following link to approve the request. <br /> <a href="http://127.0.0.1/git/VH-Registration/dir_approve.php?key='.$dir_key.'&id='.$row['id'].'">http://127.0.0.1/git/VH-Registration/dir_approve.php?key='.$dir_key.'&id='.$row['id'].'</a> .';
+		$altemail = $row['st_name'].' has requested a '.$row['category'].' room for '.$row['first_name'].'. Open the following link in browser to approve the request. http://127.0.0.1/git/VH-Registration/approve.php?key='.$dir_key.'&id='.$row['id'].' .';
 		try {
 		    //Server settings
 		    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
@@ -41,7 +43,7 @@
 
 		    //Recipients
 		    $mail->setFrom('prmsrswt@gmail.com', 'Prem Sarswat');
-		    $mail->addAddress($incharge_email);     // Add a recipient
+		    $mail->addAddress($director_email);     // Add a recipient
 
 
 		    //Content
@@ -51,13 +53,13 @@
 		    $mail->AltBody = $altemail;
 
 		    $mail->send();
-		    $msg = '<h1><span class="doneTitle">You have verified the request.</span></h1>
-			<h3><span class="doneSub">An email will be sent to visitor when your request is approved.</span></h3>';
+		    $msg = '<h1><span class="doneTitle">You have approved the request.</span></h1>
+			<h3><span class="doneSub">An email will be sent to you when Director approves this request.</span></h3>';
 		} catch (Exception $e) {
 			$msg = '<h1><span class="doneTitle">Message could not be sent. Mailer Error: </span></h1>'.$mail->ErrorInfo; 
 		}
 	} else {
-		$msg = '<h1><span class="doneTitle">Failed to verify the request.</span></h1>';
+		$msg = '<h1><span class="doneTitle">Failed to approve the request.</span></h1>';
 	}
 ?>
 <!DOCTYPE html>
