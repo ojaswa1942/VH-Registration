@@ -648,3 +648,23 @@ nav .logo {
   float:left;
   transition: .3s;
 }
+
+.doneSec {
+  text-align: center;
+  color: white;
+  padding-top: 100px;
+}
+
+.doneTitle {
+  font-size: 5vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.doneSub {
+  font-size: 2vw;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin-top: 15px;
+}
